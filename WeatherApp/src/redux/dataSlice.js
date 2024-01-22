@@ -17,17 +17,15 @@ const months = [
   'December',
 ];
 
-const initialState = {
-  day: week[today.getDay()],
-  numberDay: today.getDate(),
-  month: months[today.getMonth()],
-  year: today.getFullYear(),
-  currentHour: `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toFixed(0).padStart(2, '0')}`,
-};
-
 const dataSlice = createSlice({
   name: 'currentDate',
-  initialState,
+  initialState : {
+    day: week[today.getDay()],
+    numberDay: today.getDate(),
+    month: months[today.getMonth()],
+    year: today.getFullYear(),
+    currentHour: `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toFixed(0).padStart(2, '0')}`,
+  },
   reducers: {
     CurrentDateAction: (state) => {
       const now = new Date();

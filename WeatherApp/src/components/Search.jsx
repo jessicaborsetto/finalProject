@@ -1,30 +1,40 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Data from "./Data";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { setSearch, setError, setWeather } from '../redux/searchSlice'
+
 function Search({ onSearch }) {
+  const dispatch = useDispatch();
+  const searchState = useSelector((state) => state.search);
+
+  const { search, error, weather } = searchState;
+
   const api = {
     key: "60500f103a9cf146bfe136985271a802",
     base: "http://api.openweathermap.org/data/2.5/",
   };
 
   // Stato per la search bar
-  const [search, setSearch] = useState("");
-  const [error, setError] = useState("");
+  // const [search, setSearch] = useState("");
+  // const [error, setError] = useState("");
 
-  const [weather, setWeather] = useState({
-    name: "",
-    sys: [{ country: "", sunrise: "", sunset: "" }],
-    main: [{ temp: "", feels_like: "", humidity: "", temp_min: "", temp_max: "" }],
-    weather: [{ description: "" }],
-    wind: [{ speed: "" }],
-  });
+  // const [weather, setWeather] = useState({
+  //   name: "",
+  //   sys: [{ country: "", sunrise: "", sunset: "" }],
+  //   main: [{ temp: "", feels_like: "", humidity: "", temp_min: "", temp_max: "" }],
+  //   weather: [{ description: "" }],
+  //   wind: [{ speed: "" }],
+  // });
+
+
 
   const searchCity = async () => {
     if (search.trim() === "") {
-      setError("Please enter a city name.");
+      dispatch(setError("Please enter a city name."));
       return;
     }
 
@@ -35,15 +45,15 @@ function Search({ onSearch }) {
       const result = await response.json();
 
       if (response.ok) {
-        setWeather(result);
+        dispatch(setWeather(result));
         onSearch(search);
-        setError("");
+        dispatch(setError(""));
       } else {
-        setError(`Error: ${result.message}`);
+        dispatch(setError(`Error: ${result.message}`));
       }
     } catch (error) {
       console.error("Error fetching data:", error);
-      setError("An error occurred while fetching data.");
+      dispatch(setError("An error occurred while fetching data."));
     }
   };
 
@@ -78,7 +88,7 @@ function Search({ onSearch }) {
                     placeholder="Search the city.."
                     className="me-2 input rounded-pill col-12"
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => dispatch(setSearch(e.target.value))}
                   />
                 </Form>
               </div>
