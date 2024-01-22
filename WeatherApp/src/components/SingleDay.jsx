@@ -11,20 +11,18 @@ function SingleDay({ forecast }) {
     for (let i = 0; i < forecast.length; i += cardsPerSlide) {
       const slideCards = forecast.slice(i, i + cardsPerSlide).map((forecastItem, index) => (
         <div key={forecastItem.id} className="col-12 col-sm-6 col-lg-3 mb-3">
-        <Card key={index} className="mr-3 mx-2">
-          <Card.Body className="dayAcc">
-           <WeeklyData date={forecastItem.dt_txt} className="cardDate"/>
+          <Card key={index} className="mr-3 mx-2 card">
+            <Card.Body className="dayAcc">
+              <WeeklyData date={forecastItem.dt_txt} className="cardDate" />
 
-            <Card.Text>
-            <p>Weather: {forecastItem.weather[0].description}</p>
-
-              <p className='m-0'><i className="bi bi-thermometer-half me-4"></i>Temperature: {forecastItem.main.temp}°C</p>
-              <small>Feels like: {forecastItem.main.feels_like}°C</small>
-              <p className='mt-3'><i className="bi bi-moisture me-4"></i>Humidity: {forecastItem.main.humidity}°C</p>
-
-            </Card.Text>
-          </Card.Body>
-        </Card>
+              <Card.Text>
+                <p><b>Weather:</b> <br /> {forecastItem.weather[0].description}</p>
+                <p className='m-0'><i className="bi bi-thermometer-half me-4"></i>Temperature: {forecastItem.main.temp}°C</p>
+                <small className='italic'>Feels like: {forecastItem.main.feels_like}°C</small>
+                <p className='mt-3'><i className="bi bi-moisture me-4"></i>Humidity: {forecastItem.main.humidity}°C</p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         </div>
       ));
 

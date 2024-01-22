@@ -70,8 +70,6 @@ function Search({ onSearch }) {
               <Data></Data>
             </div>
 
-
-
             <div className="d-flex justify-content-evenly align-items-center search mb-3">
               <div>
                 <Form  onSubmit={handleFormSubmit}>

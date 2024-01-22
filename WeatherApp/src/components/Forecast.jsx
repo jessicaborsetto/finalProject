@@ -60,7 +60,7 @@ function Forecast({ search }) {
                 <XAxis dataKey="name"  />
                 <YAxis />
                 <CartesianGrid stroke="#FFFFFF" strokeDasharray="5 5" />
-                <Line type="monotone" dataKey="temperature" stroke="#000" />
+                <Line type="monotone" dataKey="temperature" stroke="#020024" />
               </LineChart>
             </div>
           </Col>

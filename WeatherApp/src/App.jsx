@@ -3,7 +3,6 @@ import Forecast from './components/Forecast';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -17,7 +16,7 @@ function App() {
 
   return (
     <>
-      <Container>
+      
         <Row>
           <Col xs={12} lg={4}>
             <div className='d-lg-flex justify-content-lg-between'>
@@ -34,7 +33,7 @@ function App() {
           
           </Col>
         </Row>
-      </Container>
+   
 
     </>
   )
