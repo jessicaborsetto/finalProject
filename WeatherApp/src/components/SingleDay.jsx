@@ -3,15 +3,15 @@ import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import WeeklyData from './WeeklyData';
 
-function SingleDay({ forecast }) {
+function SingleDay({ forecast}) {
   const cardsPerSlide = 4;
 
   const renderSlides = () => {
     const slides = [];
     for (let i = 0; i < forecast.length; i += cardsPerSlide) {
-      const slideCards = forecast.slice(i, i + cardsPerSlide).map((forecastItem, index) => (
+      const slideCards = forecast.slice(i, i + cardsPerSlide).map((forecastItem) => (
         <div key={forecastItem.id} className="col-12 col-sm-6 col-lg-3 mb-3">
-          <Card key={index} className="mr-3 mx-2 card">
+          <Card key={forecastItem.id} className="mr-3 mx-2 card">
             <Card.Body className="dayAcc">
               <WeeklyData date={forecastItem.dt_txt} className="cardDate" />
 
@@ -27,8 +27,10 @@ function SingleDay({ forecast }) {
       ));
 
       slides.push(
-        <Carousel.Item key={i}>
-          <div className="d-flex">{slideCards}</div>
+        <Carousel.Item>
+          
+          <div className="d-flex" key={forecast}>{slideCards} </div>
+      
         </Carousel.Item>
       );
     }

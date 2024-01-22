@@ -1,25 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
 import SingleDay from "./SingleDay";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function Forecast({ search }) {
-  const [forecast, setForecast] = useState(null);
+import { useDispatch, useSelector } from 'react-redux';
+import { setForecast, setForecastLoading, setForecastError } from '../redux/forecastSlice'
 
-  const apiForecast = {
-    key: "60500f103a9cf146bfe136985271a802",
-    base: "http://api.openweathermap.org/data/2.5/",
-  };
+function Forecast({ search }) {
+  // const [forecast, setForecast] = useState(null);
+
+  const dispatch = useDispatch();
+  const forecast = useSelector(state => state.forecast.data);
 
   useEffect(() => {
+
+    const apiForecast = {
+      key: "60500f103a9cf146bfe136985271a802",
+      base: "http://api.openweathermap.org/data/2.5/",
+    };
+
+    const url = `${apiForecast.base}forecast?q=${search}&units=metric&appid=${apiForecast.key}`
+
     const fetchData = async () => {
+      dispatch(setForecastLoading())
       try {
 
-        const response = await fetch(
-          `${apiForecast.base}forecast?q=${search}&units=metric&appid=${apiForecast.key}`
-        );
+        const response = await fetch(url);
         const result = await response.json();
         const currentDate = new Date();
 
@@ -33,18 +41,20 @@ function Forecast({ search }) {
           return daysDifference >= 0 && daysDifference < 7;
         });
 
-        setForecast(filteredForecast);
+        dispatch(setForecast(filteredForecast));
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
+        dispatch(setForecastError(error.message));
       }
     };
 
     fetchData();
-  }, [search]);
+  }, [search, dispatch]);
 
   const data = (forecast || []).map((forecastItem) => ({
-    name: forecastItem.dt_txt,
-    temperature: forecastItem.main.temp,
+    key: forecastItem.dt_txt || '',
+    name: forecastItem.dt_txt || '',
+    temperature: forecastItem.main.temp || 0,
   }));
 
   return (
@@ -67,7 +77,7 @@ function Forecast({ search }) {
 
          
             <h3 className="title my-4">Weekly forecast:</h3>
-            {forecast && <SingleDay forecast={forecast} />}
+            {forecast && <SingleDay key={forecast} forecast={forecast} />}
          
         </Row>
       </Container>

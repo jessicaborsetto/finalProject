@@ -30,8 +30,6 @@ function Search({ onSearch }) {
   //   wind: [{ speed: "" }],
   // });
 
-
-
   const searchCity = async () => {
     if (search.trim() === "") {
       dispatch(setError("Please enter a city name."));
