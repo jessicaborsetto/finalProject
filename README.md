@@ -1,4 +1,4 @@
-# finalProject
+# Final Epicode Project
 ## React Redux Weather and Job Research Apps
 
 ### Overview
