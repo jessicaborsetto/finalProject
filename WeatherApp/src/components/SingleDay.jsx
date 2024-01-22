@@ -10,6 +10,7 @@ function SingleDay({ forecast }) {
     const slides = [];
     for (let i = 0; i < forecast.length; i += cardsPerSlide) {
       const slideCards = forecast.slice(i, i + cardsPerSlide).map((forecastItem, index) => (
+        <div key={forecastItem.id} className="col-12 col-sm-6 col-lg-3 mb-3">
         <Card key={index} className="mr-3 mx-2">
           <Card.Body className="dayAcc">
            <WeeklyData date={forecastItem.dt_txt} className="cardDate"/>
@@ -24,6 +25,7 @@ function SingleDay({ forecast }) {
             </Card.Text>
           </Card.Body>
         </Card>
+        </div>
       ));
 
       slides.push(

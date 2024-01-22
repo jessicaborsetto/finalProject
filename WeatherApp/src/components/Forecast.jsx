@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
 import SingleDay from "./SingleDay";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Forecast({ search }) {
   const [forecast, setForecast] = useState(null);
@@ -48,20 +51,26 @@ function Forecast({ search }) {
     <>
 
       {/* GRAFICO */}
-      <h3 className="title mb-4">Temperature:</h3>
-      <div className="grafic">
-        <LineChart width={1000} height={220} data={data} >
-          <XAxis dataKey="name" />
-          <YAxis />
-          <CartesianGrid stroke="#FFFFFF" strokeDasharray="5 5" />
-          <Line type="monotone" dataKey="temperature" stroke="#28288F" />
-        </LineChart>
-      </div>
+      <Container>
+        <Row>
+          <Col className="d-none d-md-block graficBox">
+            <h3 className="title mb-4">Temperature:</h3>
+            <div className="grafic">
+              <LineChart width={1000} height={220} data={data}  >
+                <XAxis dataKey="name"  />
+                <YAxis />
+                <CartesianGrid stroke="#FFFFFF" strokeDasharray="5 5" />
+                <Line type="monotone" dataKey="temperature" stroke="#000" />
+              </LineChart>
+            </div>
+          </Col>
 
-      
-      <h3 className="title my-4">Weekly forecast:</h3>
-
-      {forecast && <SingleDay forecast={forecast} />}
+         
+            <h3 className="title my-4">Weekly forecast:</h3>
+            {forecast && <SingleDay forecast={forecast} />}
+         
+        </Row>
+      </Container>
 
     </>
   );

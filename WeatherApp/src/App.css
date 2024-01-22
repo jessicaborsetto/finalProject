@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 #root {
@@ -6,20 +6,20 @@
   margin: 0;
   width: 100%;
   height: 100bh;
-  background-color: rgb(17, 17, 17);
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(43,25,71,1) 28%, rgba(95,44,165,1) 46%, rgba(209,255,0,0.711922268907563) 92%);
   color: #d5d5d5;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Saira', sans-serif;
   padding: 2%;
 
 }
 
-.search{
-  padding-inline: 20px;
+.search, .form{
+  width: 100%;
 }
 
 .navBar{
   padding: 2%;
-  background-color: rgb(32, 32, 32);
+  background-color: #020024;
   box-shadow: 8px 6px 17px 5px rgba(0,0,0,0.26);
   border-radius: 20px;
 }
@@ -27,13 +27,19 @@
 .input{
   padding: 10px 20px;
   font-weight: 600;
-  background-color: #B5E3CF;
-
+  background-color: #e7bdff41;
   border:0;
+  color: #d5d5d5;
+}
+
+.input:hover{
+  background-color: #d0ff009f;
+  transition: 0.5s;
+  color: #111111;
 }
 
 .CurrentData{
-  width: 40%;
+  width: 100%;
   text-align: left;
   padding: 2%
 }
@@ -45,10 +51,10 @@
 
 .myWeather{
   text-align: start;
-  margin-top: 40px;
+  margin: 40px 0;
   padding: 15px;
-  border: 2px solid rgb(32, 32, 32);
-  background-color: rgb(32, 32, 32);
+  border: 2px solid #020024;
+  background-color: #020024;
   border-radius: 20px;
   box-shadow: 8px 6px 17px 5px rgba(0,0,0,0.26)
 }
@@ -63,17 +69,12 @@
   color: #d5d5d5;
 }
 
-.city{
-  width: 35%;
-  background-color: rgb(17, 17, 17);
-}
 
 .forecast{
-  width: 70%;
   height: 100%;
-  background-color: #B5E3CF;
+  background-color: #f5e2ff5b;
+  border: 1px solid #d5d5d5;
   border-radius: 20px;
-  margin-left: 2%;
   padding: 3%;
   box-shadow: 8px 6px 17px 5px rgba(0,0,0,0.26)
 }
@@ -81,26 +82,29 @@
 .grafic{
   width: 100%;
   display: flex;
+  padding: 10px;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  background-color: #e9e9e9;
+  border-radius: 10px;
 }
-  
+
 .chartStyles{
   width: 100%;
 }
 
 .title{
-  color: #111111;
+  color: #d5d5d5;
   text-align: left;
   font-size: 20px;
 }
 
 .dayAcc{
   text-align: left;
+  width: 100%;
 }
 
 .card{
-  width: 18rem;
   height: 100%;
   display: flex;
   align-items: center;
@@ -108,11 +112,11 @@
   border-radius: 10px;
   transition: 0.5s;
   border: 1px solid #ffffff ;
-
 }
 
 .card:hover{
-  background-color: #d6f1e6c7;
+  background-color: #d0ff009f;
+
   border: 1px solid #ffffff ;
 }
 

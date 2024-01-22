@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Navbar from "react-bootstrap/Navbar";
 import Data from "./Data";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 function Search({ onSearch }) {
   const api = {
@@ -12,14 +12,14 @@ function Search({ onSearch }) {
 
   // Stato per la search bar
   const [search, setSearch] = useState("");
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
 
   const [weather, setWeather] = useState({
     name: "",
     sys: [{ country: "", sunrise: "", sunset: "" }],
-    main: [{ temp: "", feels_like: "", humidity: "", temp_min:"", temp_max:"" }],
+    main: [{ temp: "", feels_like: "", humidity: "", temp_min: "", temp_max: "" }],
     weather: [{ description: "" }],
-    wind: [{speed:""}],
+    wind: [{ speed: "" }],
   });
 
   const searchCity = async () => {
@@ -34,16 +34,16 @@ function Search({ onSearch }) {
       );
       const result = await response.json();
 
-      if (result.name === undefined || !result.name) {
-        setError();
-      } else {
+      if (response.ok) {
         setWeather(result);
         onSearch(search);
         setError("");
+      } else {
+        setError(`Error: ${result.message}`);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
-      setError();
+      setError("An error occurred while fetching data.");
     }
   };
 
@@ -55,33 +55,47 @@ function Search({ onSearch }) {
     return `${hours}:${minutes}:${seconds}`;
   };
 
-  
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    searchCity();
+  };
+
   return (
     <>
-      <Navbar className="navBar">
-        <div className="CurrentData">
-          <Data></Data>
-        </div>
-        <div className="d-flex justify-content-between align-items-center search">
-          <div>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search the city"
-                className="me-2 input rounded-pill"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <Button variant="outline-dark" onClick={searchCity} className="rounded-circle">
-                <i className="bi bi-search searchIcon"></i>
-              </Button>
-            </Form>
-          </div>
-        </div>
-        <div className="error-message">
-            {error && <p className="m-0 text-danger">{error}</p>}
-          </div>
-      </Navbar>
+      <div className="navBar">
+        <Container>
+          <Row>
+
+            <div className="CurrentData col-12 col-sm-12 col-md-6">
+              <Data></Data>
+            </div>
+
+
+
+            <div className="d-flex justify-content-evenly align-items-center search mb-3">
+              <div>
+                <Form  onSubmit={handleFormSubmit}>
+                  <Form.Control
+                    type="search"
+                    placeholder="Search the city.."
+                    className="me-2 input rounded-pill col-12"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </Form>
+              </div>
+
+              
+            </div>
+            <div className="error-message col-12">
+                {error && <p className="m-0 text-danger">{error}</p>}
+              </div>
+          </Row>
+        </Container>
+
+      </div>
+
+
 
       <div className="myWeather">
 
@@ -91,7 +105,7 @@ function Search({ onSearch }) {
           <span>{weather.sys.country}</span>
         </div>
 
-        <hr  />
+        <hr />
 
         {/* TEMPERATURE */}
         <div className="d-flex align-items-center my-2">
@@ -118,7 +132,7 @@ function Search({ onSearch }) {
 
         {/* WIND */}
         <div className="d-flex align-items-center my-2">
-        <i className="bi bi-wind me-4"></i>
+          <i className="bi bi-wind me-4"></i>
           {weather.wind.speed !== "" && <p className="m-0">  Wind: {weather.wind.speed} km/h</p>}
         </div>
 
