@@ -20,7 +20,7 @@ const Job = ({ data }) => {
   const toggleFavorite = (jobData) => {
     const companyAndJob = {
       id: `${jobData.company}-${jobData.title}`,
-      company: jobData.company,
+      company: jobData.company_name,
       title: jobData.title,
     };
 
@@ -37,7 +37,7 @@ const Job = ({ data }) => {
     >
       <Col xs={1}>
         <Button onClick={() => toggleFavorite(data)} className='btnFav rounded-circle'>
-          {isFavorite(data) ? <i class="bi bi-heart-fill favIcon"></i> : <i className="bi bi-heart notFav"></i>}
+          {isFavorite(data) ? <i className="bi bi-heart-fill favIcon"></i> : <i className="bi bi-heart notFav"></i>}
         </Button>
       </Col>
       <Col xs={3}>

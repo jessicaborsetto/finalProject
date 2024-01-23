@@ -1,15 +1,12 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { removeCompanyFromFavorites } from '../redux/FavSlice';
 import { useDispatch } from 'react-redux';
 
 const FavoriteJob = ({ data }) => {
     const dispatch = useDispatch();
-  
-    // const handleRemoveFavorite = () => {
-    //   dispatch(removeCompanyFromFavorites({ id: data.id }));
-    // };
+
 
     const handleRemoveCompany = (companyId) => {
     dispatch(removeCompanyFromFavorites(companyId));
@@ -24,7 +21,7 @@ const FavoriteJob = ({ data }) => {
         </Button>
       </Col>
       <Col xs={3}>
-        <Link to={`/${data.company}`}>{data.company_name}</Link>
+        <p>{data.company_name}</p>
       </Col>
       <Col xs={8}>
         <a href={data.url} target="_blank" rel="noreferrer">
