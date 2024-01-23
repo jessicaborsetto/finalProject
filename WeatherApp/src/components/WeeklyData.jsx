@@ -1,5 +1,7 @@
 function WeeklyData({ date}) {
 
+    //come il componente data solo che accetta il parametro da SingleDay.jsx
+
     const today = new Date(date);
     const week = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
     const months = [

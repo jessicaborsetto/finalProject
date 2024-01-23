@@ -15,7 +15,7 @@ function Forecast({ search }) {
 
   // selezione dello stato redux e del dispatch collegato
   const dispatch = useDispatch();
-  const forecast = useSelector(state => state.forecast.data);
+  const forecast = useSelector(state => state.forecast.data); //-->
 
   //raccolta dei dati api ad ogni aggiornamento del search/dispatch --> rimontaggio all'aggiornamento delle dipendenze
   useEffect(() => {
@@ -60,7 +60,7 @@ function Forecast({ search }) {
     fetchData();
   }, [search, dispatch]);
 
-  // preparo la prop per SingleDay:
+  // preparo la prop per il grafico:
   const data = (forecast && forecast.length > 0) ? forecast.map((forecastItem) => ({
     key: forecastItem.dt_txt || '',               //chiave univoca della prop
     name: forecastItem.dt_txt || '',              //nome associato a ogni previsione
@@ -87,7 +87,7 @@ function Forecast({ search }) {
 
          
             <h3 className="title my-4">Weekly forecast:</h3>
-            {/*applicazione della prop*/}
+            {/*applicazione della prop per il componente*/}
             {forecast && <SingleDay key={forecast} forecast={forecast} />}      
         </Row>
       </Container>
