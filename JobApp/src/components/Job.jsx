@@ -33,22 +33,22 @@ const Job = ({ data }) => {
 
   return (
     <Row
-      className="mx-0 mt-3 p-3"
-      style={{ border: "1px solid #00000033", borderRadius: 4 }}
+      className="mx-0 mt-3 p-3 rounded jobBox"
     >
+      <Col xs={1}>
+        <Button onClick={() => toggleFavorite(data)}>
+          {isFavorite(data) ? <i class="bi bi-heart-fill"></i> : <i className="bi bi-heart"></i>}
+        </Button>
+      </Col>
       <Col xs={3}>
         <Link to={`/${data.company_name}`}>{data.company_name}</Link>
       </Col>
-      <Col xs={6}>
+      <Col xs={8}>
         <a href={data.url} target="_blank" rel="noreferrer">
           {data.title}
         </a>
       </Col>
-      <Col xs={3}>
-        <Button onClick={() => toggleFavorite(data)}>
-          {isFavorite(data) ? "Remove from Favorites" : "Add to Favorites"}
-        </Button>
-      </Col>
+      
     </Row>
   );
 };

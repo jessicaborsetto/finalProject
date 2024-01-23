@@ -40,10 +40,10 @@ const MainSearch = () => {
   };
 
   return (
-    <Container>
+    <Container className="mainBox">
       <Row>
-        <Col xs={10} className="mx-auto my-3">
-          <h1 className="display-1">Remote Jobs Search</h1>
+        <Col xs={10} className="mx-auto">
+          <h2 className="display-1">We wanna hire you</h2>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>

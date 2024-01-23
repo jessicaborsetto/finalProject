@@ -21,7 +21,7 @@ const FavoritesPage = () => {
               <p><strong>ID:</strong> {company.id}</p>
               <p><strong>Name:</strong> {company.name}</p>
               <Button onClick={() => handleRemoveCompany(company.id)}>
-                Remove from Favorites
+              <i className="bi bi-heart-fill"></i>
               </Button>
             </div>
           ))}
