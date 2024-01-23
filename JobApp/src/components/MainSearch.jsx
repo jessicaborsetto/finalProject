@@ -75,10 +75,11 @@ const MainSearch = () => {
             !error &&
             jobs.map((jobData) => (
               <div key={jobData._id}>
-                <Job data={jobData} />
+                <Job data={jobData}>
                 <Button onClick={() => toggleFavorite(jobData)}>
                   {isFavorite(jobData) ? 'Remove from Favorites' : 'Add to Favorites'}
                 </Button>
+                </Job>
               </div>
             ))}
         </Col>
