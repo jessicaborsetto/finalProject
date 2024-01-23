@@ -3,7 +3,7 @@
 
 #root{
   font-family: 'Outfit', sans-serif;
-  background: linear-gradient(180deg, rgba(165,44,109,0.7035189075630253) 20%, rgba(255,179,0,0.21052170868347342) 68%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(180deg, rgba(5,46,51,1) 0%, rgba(0,0,0,0) 65%);
   height: 100%;
 }
 
@@ -12,21 +12,22 @@
 }
 
 .navBar{
-  background-color: rgba(79,20,52,1);
+  background-color: #D6E00C;
 }
 
 .navLink{
   text-decoration: none;
   padding: 5px 20px;
+  color:rgba(5,46,51,1)
 }
 
 .navLink:hover{
   text-decoration: none;
-  background-color: #ffffff2d;
+  background-color: #ffffff57;
   border-radius: 50px;
   transition: 0.5s;
+  color: #fff;
 }
-
 
 .mainBox{
   padding-top: 100px;
@@ -41,6 +42,38 @@
 
 .jobBox{
   background-color: #ffffff85;
-  color: #fff;
   border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.jobBox a {
+  text-decoration: none;
+  color: #111;
+}
+
+.jobBox a:hover{
+  color:#6d6d6d
+}
+
+.favIcon, .notFav{
+  padding: 0;
+  font-size: 20px;
+  color:rgba(5,46,51,1)
+}
+
+.notFav{
+  padding: 0;
+  font-size: 20px;
+  color:rgba(5,46,51,1)
+}
+
+.btnFav{
+  background-color: #D6E00C;
+  border: 1px solid #D6E00C;
+}
+
+.btnFav:hover{
+  background-color: transparent;
+  border: 1px solid #D6E00C;
 }

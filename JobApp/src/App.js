@@ -17,10 +17,10 @@ function App() {
     <BrowserRouter>
     <Navbar data-bs-theme="dark" className="fixed-top navBar">
         <Container >
-          <Navbar.Brand className="text-white logo">Jobs4you	&#8482;</Navbar.Brand>
+          <Navbar.Brand className="logo">Jobs4you	&#8482;</Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="/" className=" text-white navLink">Home</Link>
-            <Link to="/favorites" className=" text-white navLink">Favorites</Link> 
+            <Link to="/" className=" navLink">Home</Link>
+            <Link to="/favorites" className="navLink">Favorites</Link> 
           </Nav>
         </Container>
       </Navbar>

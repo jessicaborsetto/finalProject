@@ -36,8 +36,8 @@ const Job = ({ data }) => {
       className="mx-0 mt-3 p-3 rounded jobBox"
     >
       <Col xs={1}>
-        <Button onClick={() => toggleFavorite(data)}>
-          {isFavorite(data) ? <i class="bi bi-heart-fill"></i> : <i className="bi bi-heart"></i>}
+        <Button onClick={() => toggleFavorite(data)} className='btnFav rounded-circle'>
+          {isFavorite(data) ? <i class="bi bi-heart-fill favIcon"></i> : <i className="bi bi-heart notFav"></i>}
         </Button>
       </Col>
       <Col xs={3}>
@@ -54,3 +54,4 @@ const Job = ({ data }) => {
 };
 
 export default Job;
+
