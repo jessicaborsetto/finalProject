@@ -1,4 +1,3 @@
-// import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Data from "./Data";
 import Container from 'react-bootstrap/Container';
@@ -6,19 +5,24 @@ import Row from 'react-bootstrap/Row';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setSearch, setError, setWeather } from '../redux/searchSlice'
+//importazioni
 
+//preparazione del componente che riceve come prop l'onSearch (app.jsx)
 function Search({ onSearch }) {
+   // selezione dello stato redux e del dispatch collegato
   const dispatch = useDispatch();
   const searchState = useSelector((state) => state.search);
 
+   // destrutturazione di searchState per un accesso più semplice alle sue proprietà
   const { search, error, weather } = searchState;
 
+  //preparazone per l'API
   const api = {
     key: "60500f103a9cf146bfe136985271a802",
     base: "http://api.openweathermap.org/data/2.5/",
   };
 
-  // Stato per la search bar
+  // VECCHIO Stato per la search bar --------------------------------------------------------------------
   // const [search, setSearch] = useState("");
   // const [error, setError] = useState("");
 
@@ -29,13 +33,16 @@ function Search({ onSearch }) {
   //   weather: [{ description: "" }],
   //   wind: [{ speed: "" }],
   // });
+  // FINE VECCHIO Stato per la search bar --------------------------------------------------------------------
 
+//funzione della ricerca:
   const searchCity = async () => {
     if (search.trim() === "") {
       dispatch(setError("Please enter a city name."));
       return;
-    }
+    } //se la ricerca non riceve un parametro allora avviene il dispatch dell'errore
 
+    //se invece c'è un parametro di ricerca fetcha i risultati
     try {
       const response = await fetch(
         `${api.base}weather?q=${search}&units=metric&appid=${api.key}`
@@ -43,18 +50,19 @@ function Search({ onSearch }) {
       const result = await response.json();
 
       if (response.ok) {
-        dispatch(setWeather(result));
+        dispatch(setWeather(result));     //se va tutto bene mostra i risultati di quella ricerca e non mostrare l'errore. 
         onSearch(search);
         dispatch(setError(""));
       } else {
-        dispatch(setError(`Error: ${result.message}`));
+        dispatch(setError(`Error: ${result.message}`));     //in caso contrario mostra l'errore
       }
-    } catch (error) {
+    } catch (error) {                                       //gestione dell'errore
       console.error("Error fetching data:", error);
       dispatch(setError("An error occurred while fetching data."));
     }
   };
 
+  //dati da mostrare nel SUNSET e SUNRISE del componente
   const formatTime = (timestamp) => {
     const date = new Date(timestamp * 1000);
     const hours = date.getHours();
@@ -63,6 +71,7 @@ function Search({ onSearch }) {
     return `${hours}:${minutes}:${seconds}`;
   };
 
+  //gestione del form 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     searchCity();
@@ -116,6 +125,8 @@ function Search({ onSearch }) {
         {/* TEMPERATURE */}
         <div className="d-flex align-items-center my-2">
           <i className="bi bi-thermometer-half me-4"></i>
+          
+          {/* (per tutti i valori della città) se weather.dato è diverso da "" allora stampa:*/}
           {weather.main.temp !== "" && <p className="m-0">  Temperature: {weather.main.temp}°C</p>}
           {weather.main.feels_like !== "" && <small className="m-y mx-4">Feels like: {weather.main.feels_like}°C</small>}
         </div>
