@@ -7,15 +7,20 @@ import Col from 'react-bootstrap/Col';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setForecast, setForecastLoading, setForecastError } from '../redux/forecastSlice'
+//importazione 
+
 
 function Forecast({ search }) {
-  // const [forecast, setForecast] = useState(null);
+  // const [forecast, setForecast] = useState(null); ------- vecchio stato
 
+  // selezione dello stato redux e del dispatch collegato
   const dispatch = useDispatch();
   const forecast = useSelector(state => state.forecast.data);
 
+  //raccolta dei dati api ad ogni aggiornamento del search/dispatch --> rimontaggio all'aggiornamento delle dipendenze
   useEffect(() => {
 
+    //preparazione della chiamata API
     const apiForecast = {
       key: "60500f103a9cf146bfe136985271a802",
       base: "http://api.openweathermap.org/data/2.5/",
@@ -31,31 +36,36 @@ function Forecast({ search }) {
         const result = await response.json();
         const currentDate = new Date();
 
-        // Filtra le previsioni che corrispondono ai prossimi 7 giorni
-        const filteredForecast = (result.list ?? []).filter((forecastItem) => {
+        // filtra le previsioni che corrispondono ai prossimi giorni:
+        // il risultato dell'api c'è oppure no? c'è: filtra / non c'è: []
+        const filteredForecast = (result.list && result.list.length > 0) ? result.list.filter((forecastItem) => {
+          // ottieni la data della previsione fornito nella risposta API (.dt_txt)
           const forecastDate = new Date(forecastItem.dt_txt);
+
+          // calcola la differenza di tempo tra la data della previsione e la data corrente (in modo da togliere le carte in base alle ore/giorni già trascorse/i)
           const timeDifference = forecastDate.getTime() - currentDate.getTime();
           const daysDifference = timeDifference / (1000 * 3600 * 24);
 
-          // Mostra solo le previsioni per i prossimi 7 giorni
+          // mostra solo le previsioni per i prossimi 7 giorni
           return daysDifference >= 0 && daysDifference < 7;
-        });
+        }): [];
 
-        dispatch(setForecast(filteredForecast));
+        dispatch(setForecast(filteredForecast));        //mostra lo stato
+
       } catch (error) {
-        // console.error("Error fetching data:", error);
-        dispatch(setForecastError(error.message));
+        dispatch(setForecastError(error.message));      //in caso di errore
       }
     };
-
+    //chiama la funzione
     fetchData();
   }, [search, dispatch]);
 
-  const data = (forecast || []).map((forecastItem) => ({
-    key: forecastItem.dt_txt || '',
-    name: forecastItem.dt_txt || '',
-    temperature: forecastItem.main.temp || 0,
-  }));
+  // preparo la prop per SingleDay:
+  const data = (forecast && forecast.length > 0) ? forecast.map((forecastItem) => ({
+    key: forecastItem.dt_txt || '',               //chiave univoca della prop
+    name: forecastItem.dt_txt || '',              //nome associato a ogni previsione
+    temperature: forecastItem.main.temp || 0,     //temperatura della previsione
+  })) : [];
 
   return (
     <>
@@ -77,8 +87,8 @@ function Forecast({ search }) {
 
          
             <h3 className="title my-4">Weekly forecast:</h3>
-            {forecast && <SingleDay key={forecast} forecast={forecast} />}
-         
+            {/*applicazione della prop*/}
+            {forecast && <SingleDay key={forecast} forecast={forecast} />}      
         </Row>
       </Container>
 

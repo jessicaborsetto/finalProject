@@ -1,4 +1,4 @@
-// creo la 'slice' che si occuperà della data corrente:
+// creo la 'slice' che si occuperà della DATA CORRENTE:
 import {createSlice} from '@reduxjs/toolkit'
 
 // creo l'oggetto date
