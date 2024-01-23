@@ -1,9 +1,8 @@
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col, Form } from "react-bootstrap";
 import Job from "./Job";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { setQuery, setJobs, setLoading, setError } from '../redux/MainSlice'
-
+import { useDispatch, useSelector } from "react-redux";
+import { setQuery, setJobs, setLoading, setError } from "../redux/MainSlice";
 
 const MainSearch = () => {
   // const [query, setQuery] = useState("");
@@ -12,14 +11,14 @@ const MainSearch = () => {
   const dispatch = useDispatch();
   const { query, jobs, loading, error } = useSelector((state) => state.main);
 
-  const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+  const baseEndpoint =
+    "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
-
-  const handleChange = e => {
+  const handleChange = (e) => {
     dispatch(setQuery(e.target.value));
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
 
@@ -28,19 +27,17 @@ const MainSearch = () => {
       if (response.ok) {
         const { data } = await response.json();
         dispatch(setJobs(data));
-        dispatch(setError(''));
+        dispatch(setError(""));
       } else {
-        dispatch(setError('Error: at fetching data'));
+        dispatch(setError("Error: at fetching data"));
       }
     } catch (error) {
       console.log(error);
-      dispatch(setError('An error occurred while fetching data.'));
+      dispatch(setError("An error occurred while fetching data."));
     } finally {
       dispatch(setLoading(false));
     }
   };
-
- 
 
   return (
     <Container>
@@ -50,7 +47,12 @@ const MainSearch = () => {
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
-            <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
+            <Form.Control
+              type="search"
+              value={query}
+              onChange={handleChange}
+              placeholder="type and press Enter"
+            />
           </Form>
         </Col>
         <Col xs={10} className="mx-auto mb-5">

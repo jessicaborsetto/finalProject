@@ -1,19 +1,19 @@
 import Form from "react-bootstrap/Form";
 import Data from "./Data";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
-import { useSelector, useDispatch } from 'react-redux';
-import { setSearch, setError, setWeather } from '../redux/searchSlice'
+import { useSelector, useDispatch } from "react-redux";
+import { setSearch, setError, setWeather } from "../redux/searchSlice";
 //importazioni
 
 //preparazione del componente che riceve come prop l'onSearch (app.jsx)
 function Search({ onSearch }) {
-   // selezione dello stato redux e del dispatch collegato
+  // selezione dello stato redux e del dispatch collegato
   const dispatch = useDispatch();
   const searchState = useSelector((state) => state.search);
 
-   // destrutturazione di searchState per un accesso più semplice alle sue proprietà
+  // destrutturazione di searchState per un accesso più semplice alle sue proprietà
   const { search, error, weather } = searchState;
 
   //preparazone per l'API
@@ -35,7 +35,7 @@ function Search({ onSearch }) {
   // });
   // FINE VECCHIO Stato per la search bar --------------------------------------------------------------------
 
-//funzione della ricerca:
+  //funzione della ricerca:
   const searchCity = async () => {
     if (search.trim() === "") {
       dispatch(setError("Please enter a city name."));
@@ -50,13 +50,14 @@ function Search({ onSearch }) {
       const result = await response.json();
 
       if (response.ok) {
-        dispatch(setWeather(result));     //se va tutto bene mostra i risultati di quella ricerca e non mostrare l'errore. 
+        dispatch(setWeather(result)); //se va tutto bene mostra i risultati di quella ricerca e non mostrare l'errore.
         onSearch(search);
         dispatch(setError(""));
       } else {
-        dispatch(setError(`Error: ${result.message}`));     //in caso contrario mostra l'errore
+        dispatch(setError(`Error: ${result.message}`)); //in caso contrario mostra l'errore
       }
-    } catch (error) {                                       //gestione dell'errore
+    } catch (error) {
+      //gestione dell'errore
       console.error("Error fetching data:", error);
       dispatch(setError("An error occurred while fetching data."));
     }
@@ -71,7 +72,7 @@ function Search({ onSearch }) {
     return `${hours}:${minutes}:${seconds}`;
   };
 
-  //gestione del form 
+  //gestione del form
   const handleFormSubmit = (e) => {
     e.preventDefault();
     searchCity();
@@ -82,14 +83,13 @@ function Search({ onSearch }) {
       <div className="navBar">
         <Container>
           <Row>
-
             <div className="CurrentData col-12 col-sm-12 col-md-6">
               <Data></Data>
             </div>
 
             <div className="d-flex justify-content-evenly align-items-center search mb-3">
               <div>
-                <Form  onSubmit={handleFormSubmit}>
+                <Form onSubmit={handleFormSubmit}>
                   <Form.Control
                     type="search"
                     placeholder="Type a city and press Enter.."
@@ -99,21 +99,15 @@ function Search({ onSearch }) {
                   />
                 </Form>
               </div>
-
-              
             </div>
             <div className="error-message col-12">
-                {error && <p className="m-0 text-danger">{error}</p>}
-              </div>
+              {error && <p className="m-0 text-danger">{error}</p>}
+            </div>
           </Row>
         </Container>
-
       </div>
 
-
-
       <div className="myWeather">
-
         {/* LOCATION */}
         <div>
           <h2>{weather.name}</h2>
@@ -125,32 +119,49 @@ function Search({ onSearch }) {
         {/* TEMPERATURE */}
         <div className="d-flex align-items-center my-2">
           <i className="bi bi-thermometer-half me-4"></i>
-          
+
           {/* (per tutti i valori della città) se weather.dato è diverso da "" allora stampa:*/}
-          {weather.main.temp !== "" && <p className="m-0">  Temperature: {weather.main.temp}°C</p>}
-          {weather.main.feels_like !== "" && <small className="m-y mx-4">Feels like: {weather.main.feels_like}°C</small>}
+          {weather.main.temp !== "" && (
+            <p className="m-0"> Temperature: {weather.main.temp}°C</p>
+          )}
+          {weather.main.feels_like !== "" && (
+            <small className="m-y mx-4">
+              Feels like: {weather.main.feels_like}°C
+            </small>
+          )}
         </div>
 
         <div className="d-flex align-items-center my-2">
           <i className="bi bi-thermometer me-4"></i>
-          {weather.main.temp_min !== "" && <p className="m-0">  Lowest temperature: {weather.main.temp_min}°C</p>}
+          {weather.main.temp_min !== "" && (
+            <p className="m-0">
+              {" "}
+              Lowest temperature: {weather.main.temp_min}°C
+            </p>
+          )}
         </div>
 
         <div className="d-flex align-items-center my-2">
           <i className="bi bi-thermometer-high me-4"></i>
-          {weather.main.temp_max !== "" && <p className="m-0"> Max temperature: {weather.main.temp_max}°C</p>}
+          {weather.main.temp_max !== "" && (
+            <p className="m-0"> Max temperature: {weather.main.temp_max}°C</p>
+          )}
         </div>
 
         {/* UMIDITA */}
         <div className="d-flex align-items-center my-2">
           <i className="bi bi-moisture me-4"></i>
-          {weather.main.humidity !== "" && <p className="m-0">  Humidity: {weather.main.humidity}°C</p>}
+          {weather.main.humidity !== "" && (
+            <p className="m-0"> Humidity: {weather.main.humidity}°C</p>
+          )}
         </div>
 
         {/* WIND */}
         <div className="d-flex align-items-center my-2">
           <i className="bi bi-wind me-4"></i>
-          {weather.wind.speed !== "" && <p className="m-0">  Wind: {weather.wind.speed} km/h</p>}
+          {weather.wind.speed !== "" && (
+            <p className="m-0"> Wind: {weather.wind.speed} km/h</p>
+          )}
         </div>
 
         {/* SUNRISE */}
@@ -161,7 +172,6 @@ function Search({ onSearch }) {
           )}
         </div>
 
-
         {/* SUNSET */}
         <div className="d-flex align-items-center my-2">
           <i className="bi bi-sunset-fill me-4"> </i>
@@ -170,14 +180,11 @@ function Search({ onSearch }) {
           )}
         </div>
 
-
         {/* CONDITION */}
         {weather.weather[0].main !== "" && (
           <p className="m-0"> Weather: {weather.weather[0].description}</p>
         )}
-
       </div>
-
     </>
   );
 }
