@@ -1,18 +1,16 @@
-import { useEffect, useState  } from "react";
-import { Container, Row, Col, Button  } from "react-bootstrap";
+import { useEffect,   } from "react";
+import { Container, Row, Col,   } from "react-bootstrap";
 import Job from "./Job";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { setJobs } from '../redux/CompanySlice'
 
-import { addCompanyToFavorites, removeCompanyFromFavorites } from '../redux/FavSlice'
 
 const CompanySearchResults = () => {
   // const [jobs, setJobs] = useState([]);
   const dispatch = useDispatch();
   const { jobs } = useSelector((state) => state.companySearch);
 
-  const { companies: favoriteCompanies } = useSelector((state) => state.favorites);
 
   const params = useParams();
   // const [selectedJob, setSelectedJob] = useState(null);
@@ -38,20 +36,6 @@ const CompanySearchResults = () => {
     }
   };
 
-  const toggleFavorite = (jobData) => {
-    const companyAndJob = {
-      id: `${jobData.company}-${jobData.title}`, // Assicurati che l'id sia unico
-      company: jobData.company,
-      title: jobData.title,
-    };
-
-    if (favoriteCompanies.some((fav) => fav.id === companyAndJob.id)) {
-      dispatch(removeCompanyFromFavorites(companyAndJob.id)); // Passa l'id al rimuovere
-    } else {
-      dispatch(addCompanyToFavorites(companyAndJob));
-    }
-  };
-
   return (
     <Container>
       <Row>
@@ -60,11 +44,6 @@ const CompanySearchResults = () => {
           {jobs.map((jobData) => (
             <div key={jobData._id}>
               <Job data={jobData} />
-              <Button onClick={() => toggleFavorite(jobData)}>
-                {favoriteCompanies.some((fav) => fav.id === `${jobData.company}-${jobData.title}`)
-                  ? 'Remove from Favorites'
-                  : 'Add to Favorites'}
-              </Button>
             </div>
           ))}
         </Col>
