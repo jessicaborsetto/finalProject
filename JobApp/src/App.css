@@ -3,8 +3,9 @@
 
 #root{
   font-family: 'Outfit', sans-serif;
-  background: linear-gradient(180deg, rgba(5,46,51,1) 0%, rgba(0,0,0,0) 65%);
+  background: linear-gradient(180deg, rgba(5,46,51,1) 0%, rgba(0,0,0,0) 80%);
   height: 100%;
+
 }
 
 .logo{
@@ -18,15 +19,26 @@
 .navLink{
   text-decoration: none;
   padding: 5px 20px;
-  color:rgba(5,46,51,1)
+  color:rgba(5,46,51,1);
 }
 
-.navLink:hover{
+.navLink:hover, .account:hover{
   text-decoration: none;
   background-color: #ffffff57;
   border-radius: 50px;
   transition: 0.5s;
   color: #fff;
+}
+
+.account{
+  display: flex;
+  text-decoration: none;
+  padding: 5px 20px;
+  color:rgba(5,46,51,1);
+}
+
+.account p{
+  margin: 0 10px 0 0;
 }
 
 .mainBox{
@@ -40,12 +52,31 @@
   margin-bottom: 30px;
 }
 
+.input{
+  border-radius: 50px;
+  border: transparent;
+  color: rgba(5,46,51,1) ;
+  background-color: #ffffff85;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
 .jobBox{
   background-color: #ffffff85;
   border-radius: 20px;
   display: flex;
   align-items: center;
 }
+
+.jobsContainer{
+  overflow-y: scroll;
+  height: 55vh;
+}
+
+.jobsContainer::-webkit-scrollbar{
+  display: none;
+}
+
 
 .jobBox a {
   text-decoration: none;
@@ -76,4 +107,33 @@
 .btnFav:hover{
   background-color: transparent;
   border: 1px solid #D6E00C;
+}
+
+.socials{
+  font-size: 30px;
+display: flex;
+justify-content: center;
+}
+
+.socials i{
+  margin: 10px 30px ;
+}
+
+footer{
+  padding: 20px;
+
+}
+
+.footerBox{
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.footerLinks{
+  display: flex;
+  flex-direction: column;
+}
+
+.footerLinks a {
+  text-decoration: none;
 }

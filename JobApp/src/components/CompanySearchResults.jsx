@@ -36,10 +36,10 @@ const CompanySearchResults = () => {
   };
 
   return (
-    <Container>
+    <Container className="mainBox">
       <Row>
         <Col className="my-4">
-          <h1 className="display-4 my-4">Job posting for: {params.company}</h1>
+          <h2>Job posting for: {params.company}</h2>
           {jobs.map((jobData) => (
             <div key={jobData._id}>
               <Job data={jobData} />

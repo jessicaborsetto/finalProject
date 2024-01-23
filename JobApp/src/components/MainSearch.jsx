@@ -4,6 +4,8 @@ import Job from "./Job";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuery, setJobs, setLoading, setError } from "../redux/MainSlice";
 
+import Footer from "./Footer";
+
 const MainSearch = () => {
   // const [query, setQuery] = useState("");
   // const [jobs, setJobs] = useState([]);
@@ -40,10 +42,11 @@ const MainSearch = () => {
   };
 
   return (
+    <>
     <Container className="mainBox">
       <Row>
         <Col xs={10} className="mx-auto">
-          <h2 className="display-1">We wanna hire you</h2>
+          <h2 className="display-1">We wanna hire you&#128227;</h2>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
@@ -51,11 +54,12 @@ const MainSearch = () => {
               type="search"
               value={query}
               onChange={handleChange}
-              placeholder="type and press Enter"
+              placeholder="Type and press Enter"
+              className="input"
             />
           </Form>
         </Col>
-        <Col xs={10} className="mx-auto mb-5">
+        <Col xs={10} className="mx-auto mb-5 jobsContainer">
           {loading && <p>Loading...</p>}
           {error && <p>Error: {error}</p>}
           {!loading &&
@@ -67,7 +71,10 @@ const MainSearch = () => {
             ))}
         </Col>
       </Row>
+    <Footer></Footer>
+
     </Container>
+    </>
   );
 };
 

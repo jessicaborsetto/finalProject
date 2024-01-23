@@ -35,15 +35,15 @@ const Job = ({ data }) => {
     <Row
       className="mx-0 mt-3 p-3 rounded jobBox"
     >
-      <Col xs={1}>
+       <Col xs={2} sm={2} md={2} lg={1}>
         <Button onClick={() => toggleFavorite(data)} className='btnFav rounded-circle'>
           {isFavorite(data) ? <i className="bi bi-heart-fill favIcon"></i> : <i className="bi bi-heart notFav"></i>}
         </Button>
       </Col>
-      <Col xs={3}>
+      <Col xs={4} sm={3} md={4} lg={3}>
         <Link to={`/${data.company_name}`}>{data.company_name}</Link>
       </Col>
-      <Col xs={8}>
+      <Col xs={6} sm={7} md={6} lg={8}>
         <a href={data.url} target="_blank" rel="noreferrer">
           {data.title}
         </a>
