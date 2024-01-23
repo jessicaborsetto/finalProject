@@ -92,7 +92,7 @@ function Search({ onSearch }) {
                 <Form  onSubmit={handleFormSubmit}>
                   <Form.Control
                     type="search"
-                    placeholder="Search the city.."
+                    placeholder="Type a city and press Enter.."
                     className="me-2 input rounded-pill col-12"
                     value={search}
                     onChange={(e) => dispatch(setSearch(e.target.value))}
