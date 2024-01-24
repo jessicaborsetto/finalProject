@@ -76,4 +76,4 @@ export default MainSearch;
 // 	"endLineNumber": 1,
 // 	"endColumn": 2
 // }]
-// ma che cosa è questo errore interno a code? non esce mica in console
+// ma che cosa è questo errore interno a code? non esce mica in console D:
