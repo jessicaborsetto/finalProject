@@ -1,4 +1,4 @@
-// confifurazione dello store importandolo
+// confifurazione dello store redux
 import { configureStore } from '@reduxjs/toolkit';
 import { MainSearchReducer } from './MainSlice';
 import { CompanySearchReducer } from './CompanySlice';
@@ -13,6 +13,4 @@ export default configureStore ({
     }
 })
 
-// lo store redux globale viene gestito dal reducer.
-// al suo interno ci sono altri reducers che gestiscono invece gli stati specifici dei componenti:
 

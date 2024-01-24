@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
+
+html{
+  height: 100%;
+  background-color: #DFFF49
+}
+
 #root {
   text-align: center;
   margin: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(43,25,71,1) 28%, rgba(95,44,165,1) 46%, rgba(209,255,0,0.711922268907563) 92%);
   color: #fdfdfd;
   font-family: 'Saira', sans-serif;
