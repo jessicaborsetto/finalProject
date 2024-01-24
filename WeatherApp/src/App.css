@@ -5,58 +5,60 @@
   text-align: center;
   margin: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(43,25,71,1) 28%, rgba(95,44,165,1) 46%, rgba(209,255,0,0.711922268907563) 92%);
   color: #fdfdfd;
   font-family: 'Saira', sans-serif;
   padding: 2%;
 }
- 
 
+#root, .input, .title,.searchIcon{
+  color: #fdfdfd;
+}
+ 
 .search, .form{
   width: 100%;
 }
 
-.navBar{
-  padding: 2%;
+
+.navBar, .myWeather{
   background-color: #020024;
-  box-shadow: 8px 6px 17px 5px rgba(0,0,0,0.26);
   border-radius: 20px;
+  padding: 15px;
+  border: 2px solid #020024;
 }
 
 .input{
   padding: 10px 20px;
   font-weight: 600;
-  background-color: #e7bdff41;
   border:0;
-  color: #fdfdfd;
 }
 
 .input:hover{
-  background-color: #d0ff009f;
-  transition: 0.5s;
   color: #111111;
 }
 
+.input:hover, .card:hover{
+  background-color: #d0ff009f;
+  transition: 0.5s;
+}
+
 .CurrentData{
-  width: 100%;
   text-align: left;
-  padding: 2%
+  padding: 0;
 }
 
 .cardDate{
-  width: 100%;
   font-weight: 600;
+}
+
+.CurrentData, .cardDate, .forecast, .grafic, .chartStyles, .dayAcc{
+  width: 100%;
 }
 
 .myWeather{
   text-align: start;
   margin: 40px 0;
-  padding: 15px;
-  border: 2px solid #020024;
-  background-color: #020024;
-  border-radius: 20px;
-  box-shadow: 8px 6px 17px 5px rgba(0,0,0,0.26)
 }
 
 .myWeather h2{
@@ -66,64 +68,64 @@
 .searchIcon{
   font-size: 20px;
   padding: 0;
-  color: #fdfdfd;
+}
+
+.input, .forecast{
+  background-color: #f5e2ff5b;
+
 }
 
 .forecast{
-  width: 100%;
   height: 100%;
-  background-color: #f5e2ff5b;
   border: 1px solid #d5d5d5;
   border-radius: 20px;
   padding: 3%;
-  box-shadow: 8px 6px 17px 5px rgba(0,0,0,0.26)
+}
+
+.navBar, .myWeather, .forecast{
+  box-shadow: 8px 6px 17px 5px rgba(2, 0, 36, 0.521);
 }
 
 .grafic{
-  width: 100%;
-  display: flex;
   padding: 10px;
   justify-content: center;
   margin-bottom: 10px;
-  background-color: #fdfdfd;
-  border-radius: 10px;
-}
-
-.chartStyles{
-  width: 100%;
 }
 
 .title{
-  color: #fdfdfd;
   text-align: left;
   font-size: 20px;
 }
 
 .dayAcc{
   text-align: left;
-  width: 100%;
 }
 
 .card{
   height: 100%;
-  display: flex;
-  align-items: center;
   border: 0px;
-  border-radius: 10px;
-  transition: 0.5s;
   border: 1px solid #ffffff ;
-  background-color: #fdfdfd;
 }
 
 .card:hover{
-  background-color: #d0ff009f;
-
   border: 1px solid #ffffff ;
 }
 
+.grafic, .card{
+  background-color: #fdfdfd;
+  border-radius: 10px;
+}
+
+.card, .dateIcons{
+  align-items: center;
+}
+
+.grafic,.card, .dateIcons{
+  display: flex;
+}
+
+
 .dateIcons{
   font-size: 15px;
-  display: flex;
-  align-items: center;
   margin-bottom:5px ;
 }
