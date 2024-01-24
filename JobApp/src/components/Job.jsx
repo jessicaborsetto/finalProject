@@ -40,7 +40,7 @@ const Job = ({ data }) => {
           {isFavorite(data) ? <i className="bi bi-heart-fill favIcon"></i> : <i className="bi bi-heart notFav"></i>}
         </Button>
       </Col>
-      <Col xs={4} sm={3} md={4} lg={3}>
+      <Col xs={4} sm={3} md={4} lg={3} className="truncate">
         <Link to={`/${data.company_name}`}>{data.company_name}</Link>
       </Col>
       <Col xs={6} sm={7} md={6} lg={8}>

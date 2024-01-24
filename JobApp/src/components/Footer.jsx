@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 
 function Footer() {
     return (
         <>
-            <footer>
+            <Container className="mb-4 footerContainer">
                 <hr />
 
                 <h3>#StayConnected &#128640;</h3>
@@ -28,42 +28,42 @@ function Footer() {
 
                 <hr />
 
-                <div className="container p-0 footerBox">
+                <div className="container p-0 ContainerBox">
                     <Row>
-                        <Col className="col-4">
+                        <Col  xs={12} md={4} className="mb-4">
                             <h5>Company</h5>
                             <div className="container p-0">
                                 <Row>
-                                    <Col className="col-5 footerLinks">
-                                        <Link to="*">About Us</Link>
-                                        <a href="#">Careers</a>
-                                        <a href="#">Contact Us</a>
-                                        <a href="#">Block</a>
+                                    <Col className="footerLinks">
+                                        <Link to="/404">About Us</Link>
+                                        <Link to="/404">Careers</Link>
+                                        <Link to="/404">Contact Us</Link>
+                                        <Link to="/404">Block</Link>
                                     </Col>
 
                                 </Row>
                             </div>
                         </Col>
 
-                        <Col className="col-4">
+                        <Col xs={12} md={4} className="mb-4">
                             <h5>Further Information</h5>
                             <div className="container p-0">
                                 <Row>
-                                    <Col className="col-5 footerLinks">
-                                        <a href="#">Terms & Conditions</a>
-                                        <a href="#">Privacy Policy</a>
-                                        <a href="#">Terms of Use</a>
+                                    <Col className="footerLinks">
+                                        <Link to="/404">Terms & Conditions</Link>
+                                        <Link to="/404">Privacy Policy</Link>
+                                        <Link to="/404">Terms of Use</Link>
                                     </Col>
                                 </Row>
                             </div>
                         </Col>
 
-                        <Col className="col-4">
+                        <Col c xs={12} md={4} className="mb-4">
                             <h5>Help</h5>
                             <div className="container p-0">
                                 <Row>
-                                    <Col className="col-5 footerLinks">
-                                        <a href="#">Frequent Questions</a>
+                                    <Col className="footerLinks">
+                                        <Link to="/404">Frequent Questions</Link>
                                     </Col>
                                 </Row>
                             </div>
@@ -71,10 +71,7 @@ function Footer() {
                         </Col>
                     </Row>
                 </div>
-
-
-
-            </footer>
+            </Container>
         </>
     )
 }

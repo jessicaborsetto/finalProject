@@ -1,14 +1,30 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
+#root:not(.errorPage){
+  background: linear-gradient(180deg, rgba(5,46,51,1) 0%, rgba(0,0,0,0) 80%);
+  height: 100vh;
+}
+
 #root{
   font-family: 'Outfit', sans-serif;
-  background: linear-gradient(180deg, rgba(5,46,51,1) 0%, rgba(0,0,0,0) 80%);
 }
 
 .logo{
   font-size: 30px;
+  text-decoration: none;
+  color: #111;
 }
+
+.logo:hover{
+  color: #111;
+}
+
+.truncate{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 .navBar{
   background-color: #D6E00C;
@@ -68,7 +84,7 @@
 
 .jobsContainer{
   overflow-y: scroll;
-  height: 55vh;
+  height: 60vh;
 }
 
 .jobsContainer::-webkit-scrollbar{
@@ -117,13 +133,15 @@ justify-content: center;
   margin: 10px 30px ;
 }
 
-footer{
+.footerContainer{
   padding: 20px;
+  margin-top: 8px ;
+
 }
 
 .footerBox{
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 30px ;
 }
 
 .footerLinks{
@@ -137,13 +155,15 @@ footer{
 }
 
 h6{
-  padding: 20px;
+  padding: 60px;
   text-align: end;
-  background-color: #111;
+  background: linear-gradient(180deg, rgba(17,17,17,1) 0%, rgba(0,0,0,1) 100%);
   color: #D6E00C;
   margin: 0;
 }
 
-.errore{
-  margin: 200px 0;
+.error{
+  text-align: center;
+  margin: 140px 0;
+  font-size: 100px;
 }

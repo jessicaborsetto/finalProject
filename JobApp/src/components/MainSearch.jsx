@@ -4,7 +4,6 @@ import Job from "./Job";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuery, setJobs, setLoading, setError } from "../redux/MainSlice";
 
-import Footer from "./Footer";
 
 const MainSearch = () => {
   // const [query, setQuery] = useState("");
@@ -59,6 +58,7 @@ const MainSearch = () => {
             />
           </Form>
         </Col>
+        {query && (
         <Col xs={10} className="mx-auto mb-5 jobsContainer">
           {loading && <p>Loading...</p>}
           {error && <p>Error: {error}</p>}
@@ -70,8 +70,8 @@ const MainSearch = () => {
               </div>
             ))}
         </Col>
+         )}
       </Row>
-    <Footer></Footer>
 
     </Container>
     </>
