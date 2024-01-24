@@ -15,15 +15,15 @@ const MainSearch: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const [jobs, setJobs] = useState<JobData[]>([]);
 
-  // Definizione dell'endpoint di base per le chiamate API
+  // endpoint API
   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
-  // Funzione per gestire il cambiamento dell'input di ricerca
+  // Funzione per gestire il cambio dell'input della ricerca --> richiamata nell'onChange del form
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  // Funzione per gestire la sottomissione del modulo
+  // Funzione prevenire l'azione del submit + chiamata API
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -40,7 +40,7 @@ const MainSearch: React.FC = () => {
     }
   };
 
-  // Rende la struttura JSX del componente
+
   return (
     <Container>
       <Row>
@@ -49,7 +49,6 @@ const MainSearch: React.FC = () => {
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
-            {/* Utilizza il tipo 'text' per l'input di ricerca */}
             <Form.Control type="text" value={query} onChange={handleChange} placeholder="type and press Enter" />
           </Form>
         </Col>
@@ -64,3 +63,17 @@ const MainSearch: React.FC = () => {
 };
 
 export default MainSearch;
+
+// PROF:
+// [{
+// 	"resource": "/c:/Users/Jessica/Desktop/finalProject/Type/tsconfig.json",
+// 	"owner": "typescript",
+// 	"severity": 8,
+// 	"message": "Il file di definizione del tipo per 'bonjour' non è stato trovato.\n  Motivo per cui il file è presente nel programma:\n    Punto di ingresso per la libreria dei tipi impliciti 'bonjour'",
+// 	"source": "ts",
+// 	"startLineNumber": 1,
+// 	"startColumn": 1,
+// 	"endLineNumber": 1,
+// 	"endColumn": 2
+// }]
+// ma che cosa è questo errore interno a code? non esce mica in console
