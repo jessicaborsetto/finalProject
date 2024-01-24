@@ -45,7 +45,7 @@ const MainSearch = () => {
     <Container className="mainBox">
       <Row>
         <Col xs={10} className="mx-auto">
-          <h2 className="title">We wanna hire you&#128227;</h2>
+          <h2 className="title">We wanna hire you!</h2>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
