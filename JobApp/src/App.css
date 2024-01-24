@@ -10,6 +10,12 @@
   font-family: 'Outfit', sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
+/* NAVBAR ---------------------------------------------------------- */
+
 .logo{
   font-size: 30px;
   text-decoration: none;
@@ -20,40 +26,39 @@
   color: #111;
 }
 
-.truncate{
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-
 .navBar{
   background-color: #D6E00C;
 }
 
-.navLink{
-  text-decoration: none;
-  padding: 5px 20px;
+.navLink, .account, .navLink:hover, .account:hover, .input, .favIcon, .notFav{
   color:rgba(5,46,51,1);
 }
 
-.navLink:hover, .account:hover{
-  text-decoration: none;
-  background-color: #ffffff57;
-  border-radius: 50px;
-  transition: 0.5s;
-  color: #fff;
+.navLink{
+  padding: 5px 20px;
 }
 
 .account{
   display: flex;
-  text-decoration: none;
   padding: 5px 20px;
-  color:rgba(5,46,51,1);
+}
+
+.navLink:hover, .account:hover{
+  border-radius: 50px;
+  transition: 0.5s;
 }
 
 .account p{
   margin: 0 10px 0 0;
 }
+
+/* CORPO PRINCIPALE---------------------------------------------------------- */
+
+/* troncazione testo dei box lavoro quando lo schermo si riduce */
+.truncate{
+  overflow: hidden;
+  text-overflow: ellipsis;
+} 
 
 .mainBox{
   padding-top: 100px;
@@ -69,14 +74,15 @@
 .input{
   border-radius: 50px;
   border: transparent;
-  color: rgba(5,46,51,1) ;
-  background-color: #ffffff85;
   padding: 10px 20px;
   margin-bottom: 20px;
 }
 
-.jobBox{
+.jobBox, .input, .navLink:hover, .account:hover{
   background-color: #ffffff85;
+}
+
+.jobBox{
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -93,7 +99,6 @@
 
 
 .jobBox a {
-  text-decoration: none;
   color: #111;
 }
 
@@ -104,25 +109,21 @@
 .favIcon, .notFav{
   padding: 0;
   font-size: 20px;
-  color:rgba(5,46,51,1)
-}
-
-.notFav{
-  padding: 0;
-  font-size: 20px;
-  color:rgba(5,46,51,1)
 }
 
 .btnFav{
   background-color: #D6E00C;
-  border: 1px solid #D6E00C;
 }
 
 .btnFav:hover{
   background-color: transparent;
-  border: 1px solid #D6E00C;
 }
 
+.btnFav, .btnFav:hover{
+  border: 2px solid #D6E00C;
+}
+
+/* FOOTER----------------------------------------------------------------- */
 .socials{
   font-size: 30px;
 display: flex;
@@ -135,8 +136,7 @@ justify-content: center;
 
 .footerContainer{
   padding: 20px;
-  margin-top: 8px ;
-
+  margin-top: 10px ;
 }
 
 .footerBox{
@@ -150,20 +150,19 @@ justify-content: center;
 }
 
 .footerLinks a {
-  text-decoration: none;
   color: #6d6d6d;
 }
 
 h6{
   padding: 60px;
   text-align: end;
-  background: linear-gradient(180deg, rgba(17,17,17,1) 0%, rgba(0,0,0,1) 100%);
+  background: linear-gradient(180deg, rgba(1,1,1,1) 0%, rgba(0,0,0,1) 100%);
   color: #D6E00C;
   margin: 0;
 }
 
 .error{
   text-align: center;
-  margin: 140px 0;
-  font-size: 100px;
+  margin: 145px 0 30px 0;
+  font-size: 6.2rem;
 }
