@@ -44,7 +44,7 @@ const CompanySearchResults = () => {
         <Col className="my-4">
           {params.company && jobs.length > 0 && (
             <>
-              <h2>Job posting for: {params.company}</h2>
+              <h2 className="title">Job posting for: {params.company}</h2>
               {jobs.map((jobData) => (
                 <div key={jobData._id}>
                   <Job data={jobData} />

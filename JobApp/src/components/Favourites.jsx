@@ -16,7 +16,7 @@ const FavoritesPage = () => {
     <Container className="mainBox">
       <Row>
         <Col className="my-3">
-          <h2>Favorite Companies</h2>
+          <h2 className='title'>Favorite Companies</h2>
           {/* {favoriteCompanies.map((company) => (
             <div key={company.id}>
               <p><strong>ID:</strong> {company.id}</p>
