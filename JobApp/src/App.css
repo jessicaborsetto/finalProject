@@ -62,17 +62,15 @@ a{
 
 .title{
   font-size: 75px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+
 }
 
 .mainBox{
   padding-top: 100px;
-}
-
-.mainBox h2{
-  text-align: center;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 30px;
 }
 
 .input{
