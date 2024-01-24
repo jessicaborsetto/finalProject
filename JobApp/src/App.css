@@ -60,6 +60,10 @@ a{
   text-overflow: ellipsis;
 } 
 
+.title{
+  font-size: 75px;
+}
+
 .mainBox{
   padding-top: 100px;
 }
