@@ -4,8 +4,6 @@
 #root{
   font-family: 'Outfit', sans-serif;
   background: linear-gradient(180deg, rgba(5,46,51,1) 0%, rgba(0,0,0,0) 80%);
-  height: 100%;
-
 }
 
 .logo{
@@ -121,7 +119,6 @@ justify-content: center;
 
 footer{
   padding: 20px;
-
 }
 
 .footerBox{
@@ -136,4 +133,17 @@ footer{
 
 .footerLinks a {
   text-decoration: none;
+  color: #6d6d6d;
+}
+
+h6{
+  padding: 20px;
+  text-align: end;
+  background-color: #111;
+  color: #D6E00C;
+  margin: 0;
+}
+
+.errore{
+  margin: 200px 0;
 }

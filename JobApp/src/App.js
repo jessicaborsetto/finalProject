@@ -4,7 +4,7 @@ import MainSearch from "./components/MainSearch";
 import CompanySearchResults from "./components/CompanySearchResults";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import FavoritesPage from "./components/Favourites";
-import ErrorPage from "./components/page404";
+import ErrorPage from "./pages/page404";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -25,7 +25,7 @@ function App() {
             <Link to="/favorites" className="navLink">Favorites</Link> 
             </div>
           </Nav>
-          <Link to="/favorites" className="account">
+          <Link to="*" className="account">
             <p className="d-none d-md-block">Log in </p>
             <i className="bi bi-person-circle"></i>
           </Link>
@@ -37,9 +37,13 @@ function App() {
         <Route path="/" element={<MainSearch />} />
         <Route path="/:company" element={<CompanySearchResults />} />
         <Route path="/favorites" element={<FavoritesPage />}  />
-        <Route path="*" element={<ErrorPage />}  />
+        {/* <Route path="/404" element={<ErrorPage />}  /> */}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
+    
+    <h6>Copyright &#169; 2024 | All Rights Reserved</h6>
+    
     </>
   );
 }
