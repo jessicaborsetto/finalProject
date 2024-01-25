@@ -49,7 +49,6 @@ export const dataSlice = createSlice({
   },
 });
 
-//esporto l'azione del reducer
+//esporto l'azione e il reducer
 export const { CurrentDateAction } = dataSlice.actions;
-//esporto il reducer
 export const CurrentDateReducer = dataSlice.reducer;

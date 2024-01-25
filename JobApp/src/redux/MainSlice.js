@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 
+//stato per mostrare le aziende nella pagina principale una volta fatta la ricerca
 export const MainSlice = createSlice({
     name: 'main',
     initialState: {
@@ -9,15 +10,19 @@ export const MainSlice = createSlice({
       error: null,
     },
     reducers: {
+      //QUERY
       setQuery: (state, action) => {
         state.query = action.payload;
       },
+      //JOBS
       setJobs: (state, action) => {
         state.jobs = action.payload;
       },
+      //LOADING
       setLoading: (state, action) => {
         state.loading = action.payload;
       },
+      //ERRORE
       setError: (state, action) => {
         state.error = action.payload;
       },

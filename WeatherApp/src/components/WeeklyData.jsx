@@ -1,4 +1,4 @@
-function WeeklyData({ date}) {
+const WeeklyData = ({ date}) => {
 
     //come il componente data solo che accetta il parametro da SingleDay.jsx
 

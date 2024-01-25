@@ -8,7 +8,7 @@ import { setSearch, setError, setWeather } from "../redux/searchSlice";
 //importazioni
 
 //preparazione del componente che riceve come prop l'onSearch (app.jsx)
-function Search({ onSearch }) {
+const Search = ({ onSearch }) =>{
   // selezione dello stato redux e del dispatch collegato
   const dispatch = useDispatch();
   const searchState = useSelector((state) => state.search);

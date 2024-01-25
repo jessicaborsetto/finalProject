@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CurrentDateAction } from '../redux/dataSlice';
 //importo lo store di redux + useSelector e useDispatch:
-// useSelector serve per leggere i dati dallo stato globale (store) Redux e ne restituisce una porzione specifica
-// useDispatch restituisce una porzione specifica dello stato globale e restituisce la funzione dispatch dallo store --> consente di inviare azioni allo store Redux dal componente
+// useSelector serve per leggere i dati dallo stato globale (store) Redux
+// useDispatch --> consente di inviare azioni allo store Redux dal componente
 
-function Data({ }) {
+const Data = ({ }) => {
     const currentDate = useSelector((state) => state.currentDate);      //ottengo la porzione di stato redux che voglio
     const dispatch = useDispatch();                                     //ottengo il dispatch collegato al relativo selector
 
@@ -15,6 +15,7 @@ function Data({ }) {
         dispatch(CurrentDateAction());  //invoco l'azione CurrentDateAction: ogni volta che il componente avrà un aggiornamento verrà rimontato
       }, [dispatch]);           //[dispatch] = dipendenza 
 
+      
     //VECCHIO STATO DEL COMPONENTE ----------------------------------------------------------------------------------
 
     // const today = new Date();

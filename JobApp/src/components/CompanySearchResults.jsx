@@ -1,21 +1,22 @@
 import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Job from "./Job";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setJobs } from "../redux/CompanySlice";
-// import { Link } from "react-router-dom";
+import Job from "./Job";
 
 
 const CompanySearchResults = () => {
+  //stati precedenti--------------------
   // const [jobs, setJobs] = useState([]);
-  const dispatch = useDispatch();
-  const { jobs } = useSelector((state) => state.companySearch);
-
-  const params = useParams();
   // const [selectedJob, setSelectedJob] = useState(null);
 
+  //selector dello state (companySlice.js)- dispatch delle azioni- params per estrarre i parametri
+  const { jobs } = useSelector((state) => state.companySearch);
+  const dispatch = useDispatch();
+  const params = useParams();
 
+  //  API -------------------------------------------------------------------
   const baseEndpoint =
     "https://strive-benchmark.herokuapp.com/api/jobs?company=";
 
@@ -24,7 +25,6 @@ const CompanySearchResults = () => {
   }, []);
 
   const getJobs = async () => {
-
     try {
       const response = await fetch(baseEndpoint + params.company);
       if (response.ok) {
@@ -42,9 +42,11 @@ const CompanySearchResults = () => {
     <Container className="mainBox">
       <Row>
         <Col className="my-4">
+           {/* Verifica se esiste il parametro 'company' nell'URL e se ci sono lavori disponibili */}
           {params.company && jobs.length > 0 && (
             <>
               <h2 className="title">Job posting for: {params.company}</h2>
+               {/* Mappa l'array di lavori e mostra ciascun lavoro utilizzando il componente Job */}
               {jobs.map((jobData) => (
                 <div key={jobData._id}>
                   <Job data={jobData} />

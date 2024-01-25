@@ -10,7 +10,7 @@ import { setForecast, setForecastLoading, setForecastError } from '../redux/fore
 //importazione 
 
 
-function Forecast({ search }) {
+const Forecast = ({ search }) => {
   // const [forecast, setForecast] = useState(null); ------- vecchio stato
 
   // selezione dello stato redux e del dispatch collegato

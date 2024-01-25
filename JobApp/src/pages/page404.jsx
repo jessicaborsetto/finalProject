@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-function ErrorPage(){
+const ErrorPage = () => {
 
     useEffect(() => {
         // Aggiungi una classe a #root quando il componente viene montato
         document.getElementById("root").classList.add("errorPage");
     
-        // Cleanup: Rimuovi la classe quando il componente viene smontato
+        // Rimuovi la classe quando il componente viene smontato --> quindi quando esco dalla pagina di errore
         return () => {
           document.getElementById("root").classList.remove("errorPage");
         };

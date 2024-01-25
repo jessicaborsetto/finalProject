@@ -1,16 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import MainSearch from "./components/MainSearch";
-import CompanySearchResults from "./components/CompanySearchResults";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import FavoritesPage from "./components/Favourites";
-import ErrorPage from "./pages/page404";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import MainSearch from "./components/MainSearch";
+import CompanySearchResults from "./components/CompanySearchResults";
+import FavoritesPage from "./components/Favourites";
 import Footer from "./components/Footer";
+import ErrorPage from "./pages/page404";
+
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 function App() {
@@ -35,11 +36,11 @@ function App() {
         </Container>
       </Navbar>
 
+    {/* configurazione del router con le varie route path */}
       <Routes>
         <Route path="/" element={<MainSearch />} />
         <Route path="/:company" element={<CompanySearchResults />} />
         <Route path="/favorites" element={<FavoritesPage />}  />
-        {/* <Route path="/404" element={<ErrorPage />}  /> */}
         <Route path="/404" element={<ErrorPage />} />
       </Routes>
 
