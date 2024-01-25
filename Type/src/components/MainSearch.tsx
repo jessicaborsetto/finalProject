@@ -64,16 +64,3 @@ const MainSearch: React.FC = () => {
 
 export default MainSearch;
 
-// PROF:
-// [{
-// 	"resource": "/c:/Users/Jessica/Desktop/finalProject/Type/tsconfig.json",
-// 	"owner": "typescript",
-// 	"severity": 8,
-// 	"message": "Il file di definizione del tipo per 'bonjour' non è stato trovato.\n  Motivo per cui il file è presente nel programma:\n    Punto di ingresso per la libreria dei tipi impliciti 'bonjour'",
-// 	"source": "ts",
-// 	"startLineNumber": 1,
-// 	"startColumn": 1,
-// 	"endLineNumber": 1,
-// 	"endColumn": 2
-// }]
-// ma che cosa è questo errore interno a code? non esce mica in console D:
